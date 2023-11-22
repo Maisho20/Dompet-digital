@@ -1,8 +1,7 @@
-//import material.dart
 import 'package:flutter/material.dart';
 
 class homepage extends StatelessWidget {
-  const homepage({Key? key});
+  const homepage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -11,11 +10,22 @@ class homepage extends StatelessWidget {
         title: const Text('Homepage'),
       ),
       body: Center(
-        child: ElevatedButton(
-          onPressed: () {
-            Navigator.pushNamed(context, '/login');
-          },
-          child: const Text('Go to Login Page'),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            ElevatedButton(
+              onPressed: () {
+                Navigator.pushNamed(context, '/login');
+              },
+              child: const Text('Go to Login Page'),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.pushNamed(context, '/register');
+              },
+              child: const Text('Go to Register Page'),
+            ),
+          ],
         ),
       ),
     );
