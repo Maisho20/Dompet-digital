@@ -36,7 +36,13 @@ class homepage extends StatelessWidget {
                 Navigator.pushNamed(context, '/onboard');
               },
               child: const Text('Go to Onboard Page'),
-            )
+            ),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.pushNamed(context, '/pin');
+              },
+              child: const Text('Go to Pin Page'),
+            ),
           ],
         ),
       ),
