@@ -11,20 +11,6 @@ class Profil extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       extendBodyBehindAppBar: true,
-      // appBar: AppBar(
-      //   backgroundColor: Colors.transparent,
-      //   foregroundColor: Colors.white,
-      //   elevation: 0,
-      //   leading: IconButton(
-      //     icon: Icon(Icons.arrow_back),
-      //     onPressed: () {
-      //       Navigator.pop(context);
-      //     },
-      //   ),
-      //   title:
-      //       const Text('Profil', style: TextStyle(fontWeight: FontWeight.bold)),
-      // ),
-      // appBar: AppBar(title: const Text('Profil')),
       body: Container(
         decoration: BoxDecoration(
           gradient: LinearGradient(

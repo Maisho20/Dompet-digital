@@ -30,10 +30,13 @@ class homepage extends StatelessWidget {
                 Navigator.pushNamed(context, '/profil');
               },
               child: const Text('Go to Profil Page'),
+            ),
+            ElevatedButton(
+              onPressed: () {
                 Navigator.pushNamed(context, '/onboard');
               },
               child: const Text('Go to Onboard Page'),
-            ),
+            )
           ],
         ),
       ),
