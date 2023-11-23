@@ -19,15 +19,15 @@ class LoginPage extends StatelessWidget {
       //     child: const Text('Go to Second Page'),
       //   ),
       // ),
-      appBar: AppBar(
-        elevation: 0,
-        leading: IconButton(
-          icon: Icon(Icons.arrow_back),
-          onPressed: () {
-            Navigator.pop(context);
-          },
-        ),
-      ),
+      // appBar: AppBar(
+      //   elevation: 0,
+      //   leading: IconButton(
+      //     icon: Icon(Icons.arrow_back),
+      //     onPressed: () {
+      //       Navigator.pop(context);
+      //     },
+      //   ),
+      // ),
       backgroundColor: Color(0xFF213C48),
       body: Center(
         child: Container(
