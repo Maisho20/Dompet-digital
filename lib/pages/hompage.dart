@@ -25,6 +25,12 @@ class homepage extends StatelessWidget {
               },
               child: const Text('Go to Register Page'),
             ),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.pushNamed(context, '/profil');
+              },
+              child: const Text('Go to Profil Page'),
+            ),
           ],
         ),
       ),
