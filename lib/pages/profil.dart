@@ -1,9 +1,6 @@
-//import material.dart
 import 'package:dompet_digital/constants.dart';
 import 'package:flutter/material.dart';
-// import 'package:dompet_digital/constants.dart';
 
-//login
 class Profil extends StatelessWidget {
   const Profil({Key? key}) : super(key: key);
 
@@ -29,17 +26,23 @@ class Profil extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
                       Container(
-                        width: 80,
-                        height: 45,
+                        width: 63,
+                        height: 34.42,
                         child: ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(20),
+                            ),
+                            backgroundColor: loginBtnColor,
+                          ),
                           onPressed: () {
-                            Navigator.pushNamed(context, '/login');
+                            Navigator.pop(context);
                           },
                           child: IconButton(
                             padding: EdgeInsets.zero,
                             icon: Icon(Icons.arrow_back),
                             onPressed: () {
-                              Navigator.pop(context);
+                              Navigator.pushNamed(context, '/register');
                             },
                           ),
                         ),
@@ -69,20 +72,20 @@ class Profil extends StatelessWidget {
                     ),
                   ),
                   Container(
-                    width: 150,
-                    height: 150,
+                    width: 134,
+                    height: 134,
                     margin: EdgeInsets.only(top: 40),
                     child: ElevatedButton(
-                      onPressed: () {
-                        Navigator.pushNamed(context, '/login');
-                      },
+                      style: ElevatedButton.styleFrom(
+                        shape: CircleBorder(),
+                        backgroundColor: loginBtnColor,
+                      ),
+                      onPressed: () {},
                       child: IconButton(
                         padding: EdgeInsets.zero,
-                        iconSize: 100,
+                        iconSize: 80,
                         icon: Icon(Icons.emoji_people),
-                        onPressed: () {
-                          Navigator.pop(context);
-                        },
+                        onPressed: () {},
                       ),
                     ),
                   ),

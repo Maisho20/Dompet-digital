@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:dompet_digital/pages/register.dart';
 import 'package:dompet_digital/pages/hompage.dart';
 import 'package:dompet_digital/pages/profil.dart';
+import 'package:dompet_digital/pages/ktp.dart';
 
 void main() {
   runApp(const MyApp());
@@ -24,6 +25,7 @@ class MyApp extends StatelessWidget {
         '/profil': (context) => const Profil(),
         '/onboard': (context) => OnboardPage(),
         '/pin': (context) => Pincode(),
+        '/ktp': (context) => const ktpPage(),
       },
     );
   }

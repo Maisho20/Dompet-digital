@@ -33,29 +33,64 @@ class _PincodeState extends State<Pincode> {
               child: Column(
                 children: [
                   Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    // children: [
+                    //   Container(
+                    //     width: 80,
+                    //     height: 45,
+                    //     child: ElevatedButton(
+                    //       onPressed: () {
+                    //         Navigator.pushNamed(context, '/login');
+                    //       },
+                    //       child: IconButton(
+                    //         padding: EdgeInsets.zero,
+                    //         icon: Icon(Icons.arrow_back),
+                    //         onPressed: () {
+                    //           Navigator.pop(context);
+                    //         },
+                    //       ),
+                    //     ),
+                    //   ),
+                    //   SizedBox(
+                    //     height: 20,
+                    //   ),
+                    //   Container(
+                    //     margin: EdgeInsets.only(right: 130),
+                    //     child: Text(
+                    //       'Set Pin Code',
+                    //       style: whiteTextStyle.copyWith(
+                    //         fontSize: 30,
+                    //         fontWeight: FontWeight.bold,
+                    //         fontFamily: 'Poppins',
+                    //       ),
+                    //     ),
+                    //   ),
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
                       Container(
-                        width: 80,
-                        height: 45,
+                        width: 63,
+                        height: 34.42,
                         child: ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(20),
+                            ),
+                            backgroundColor: loginBtnColor,
+                          ),
                           onPressed: () {
-                            Navigator.pushNamed(context, '/login');
+                            Navigator.pop(context);
                           },
                           child: IconButton(
                             padding: EdgeInsets.zero,
                             icon: Icon(Icons.arrow_back),
                             onPressed: () {
-                              Navigator.pop(context);
+                              Navigator.pushNamed(context, '/ktp');
                             },
                           ),
                         ),
                       ),
-                      SizedBox(
-                        height: 20,
-                      ),
                       Container(
-                        margin: EdgeInsets.only(right: 130),
+                        margin: EdgeInsets.only(right: 100),
                         child: Text(
                           'Set Pin Code',
                           style: whiteTextStyle.copyWith(

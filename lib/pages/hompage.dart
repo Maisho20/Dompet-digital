@@ -43,6 +43,12 @@ class homepage extends StatelessWidget {
               },
               child: const Text('Go to Pin Page'),
             ),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.pushNamed(context, '/ktp');
+              },
+              child: const Text('Go to KTP Page'),
+            ),
           ],
         ),
       ),
