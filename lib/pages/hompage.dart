@@ -27,6 +27,9 @@ class homepage extends StatelessWidget {
             ),
             ElevatedButton(
               onPressed: () {
+                Navigator.pushNamed(context, '/profil');
+              },
+              child: const Text('Go to Profil Page'),
                 Navigator.pushNamed(context, '/onboard');
               },
               child: const Text('Go to Onboard Page'),
