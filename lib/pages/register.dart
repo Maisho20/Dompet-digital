@@ -16,6 +16,16 @@ class _RegisterPageState extends State<RegisterPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        appBar: AppBar(
+          backgroundColor: scndColor,
+          elevation: 0,
+          leading: IconButton(
+            onPressed: () {
+              Navigator.pushNamed(context, '/');
+            },
+            icon: Icon(Icons.arrow_back),
+          ),
+        ),
         extendBodyBehindAppBar: true,
         body: Container(
             decoration: BoxDecoration(
