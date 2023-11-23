@@ -1,4 +1,5 @@
 import 'package:dompet_digital/pages/login.dart';
+import 'package:dompet_digital/pages/onboard.dart';
 import 'package:flutter/material.dart';
 import 'package:dompet_digital/pages/register.dart';
 import 'package:dompet_digital/pages/hompage.dart';
@@ -18,6 +19,7 @@ class MyApp extends StatelessWidget {
         '/': (context) => const homepage(),
         '/login': (context) => const LoginPage(),
         '/register': (context) => const RegisterPage(),
+        '/onboard': (context) => OnboardPage(),
       },
     );
   }
