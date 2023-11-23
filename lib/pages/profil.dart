@@ -67,7 +67,16 @@ class Profil extends StatelessWidget {
                     ),
                   ),
                 ),
-                // Container
+                Container(
+                  child: Text(
+                    'To Get Started',
+                    style: scndTextStyle.copyWith(
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                      fontFamily: 'Poppins',
+                    ),
+                  ),
+                ),
               ],
             ),
           ),
