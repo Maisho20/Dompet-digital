@@ -11,6 +11,7 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends State<LoginPage> {
   bool passwordVisible = true;
+  bool checkboxValue = false;
 
   @override
   Widget build(BuildContext context) {
@@ -133,11 +134,25 @@ class _LoginPageState extends State<LoginPage> {
                       Row(
                         children: [
                           Container(
-                            width: 24,
-                            height: 24,
+                            width: 28,
+                            height: 28,
                             decoration: BoxDecoration(
                               color: loginBtnColor,
                               borderRadius: BorderRadius.circular(5),
+                            ),
+                            child: Checkbox(
+                              value: checkboxValue,
+                              checkColor: Colors.white,
+                              side: BorderSide(
+                                color: Colors.transparent,
+                              ),
+                              activeColor: loginBtnColor,
+                              tristate: false,
+                              onChanged: (newBool) {
+                                setState(() {
+                                  checkboxValue = newBool!;
+                                });
+                              },
                             ),
                           ),
                           SizedBox(
