@@ -3,17 +3,20 @@ import 'package:dompet_digital/constants.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
-class RegisterPage extends StatelessWidget {
-  const RegisterPage({super.key});
+class RegisterPage extends StatefulWidget {
+  const RegisterPage({Key? key}) : super(key: key);
+
+  @override
+  _RegisterPageState createState() => _RegisterPageState();
+}
+
+class _RegisterPageState extends State<RegisterPage> {
+  bool passwordVisible = true;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         extendBodyBehindAppBar: true,
-        // appBar: AppBar(
-        //   title: const Text('Register'),
-        //   backgroundColor: Colors.transparent,
-        // ),
         body: Container(
             decoration: BoxDecoration(
               gradient: LinearGradient(
@@ -45,29 +48,31 @@ class RegisterPage extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
                           Text(
-                            "Email",
-                            style: whiteTextStyle.copyWith(
-                              fontSize: 16,
+                            "Email Address",
+                            style: thirdTextStyle.copyWith(
+                              fontSize: 15,
                               fontWeight: FontWeight.bold,
-                              fontFamily: 'Poppins',
                             ),
                           ),
                           SizedBox(
                             height: 10,
                           ),
-                          TextFormField(
-                            decoration: InputDecoration(
-                              hintText: "Enter your email",
-                              hintStyle: thirdTextStyle.copyWith(
-                                fontSize: 16,
-                                fontWeight: FontWeight.bold,
-                                fontFamily: 'Poppins',
-                              ),
-                              fillColor: scndColor,
-                              filled: true,
-                              border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(10),
-                                borderSide: BorderSide.none,
+                          Container(
+                            width: double.infinity,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(10),
+                              color: scndColor,
+                            ),
+                            child: TextFormField(
+                              decoration: InputDecoration(
+                                hintText: "Enter your email",
+                                hintStyle: thirdTextStyle.copyWith(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.bold,
+                                  fontFamily: 'Poppins',
+                                ),
+                                contentPadding: EdgeInsets.symmetric(
+                                    horizontal: 20, vertical: 15),
                               ),
                             ),
                           ),
@@ -76,8 +81,8 @@ class RegisterPage extends StatelessWidget {
                           ),
                           Text(
                             "Password",
-                            style: whiteTextStyle.copyWith(
-                              fontSize: 16,
+                            style: thirdTextStyle.copyWith(
+                              fontSize: 15,
                               fontWeight: FontWeight.bold,
                               fontFamily: 'Poppins',
                             ),
@@ -85,20 +90,35 @@ class RegisterPage extends StatelessWidget {
                           SizedBox(
                             height: 10,
                           ),
-                          TextFormField(
-                            decoration: InputDecoration(
-                              hintText: "Enter your password",
-                              hintStyle: thirdTextStyle.copyWith(
-                                fontSize: 16,
-                                fontWeight: FontWeight.bold,
-                                fontFamily: 'Poppins',
-                              ),
-                              fillColor: scndColor,
-                              filled: true,
-                              border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(10),
-                                borderSide: BorderSide.none,
-                              ),
+                          Container(
+                            width: double.infinity,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(10),
+                              color: scndColor,
+                            ),
+                            child: TextField(
+                              obscureText: passwordVisible,
+                              decoration: InputDecoration(
+                                  hintText: "Enter your password",
+                                  hintStyle: thirdTextStyle.copyWith(
+                                    fontSize: 15,
+                                    fontFamily: 'Poppins',
+                                    color: thirdColor.withOpacity(0.6),
+                                  ),
+                                  border: InputBorder.none,
+                                  contentPadding: EdgeInsets.symmetric(
+                                      horizontal: 20, vertical: 15),
+                                  suffixIcon: IconButton(
+                                      onPressed: () {
+                                        setState(() {
+                                          passwordVisible = !passwordVisible;
+                                        });
+                                      },
+                                      icon: Icon(
+                                        passwordVisible
+                                            ? Icons.visibility_off
+                                            : Icons.visibility,
+                                      ))),
                             ),
                           ),
                           SizedBox(
@@ -106,8 +126,8 @@ class RegisterPage extends StatelessWidget {
                           ),
                           Text(
                             "Confirm Password",
-                            style: whiteTextStyle.copyWith(
-                              fontSize: 16,
+                            style: thirdTextStyle.copyWith(
+                              fontSize: 15,
                               fontWeight: FontWeight.bold,
                               fontFamily: 'Poppins',
                             ),
@@ -115,20 +135,35 @@ class RegisterPage extends StatelessWidget {
                           SizedBox(
                             height: 10,
                           ),
-                          TextFormField(
-                            decoration: InputDecoration(
-                              hintText: "Confirm your password",
-                              hintStyle: thirdTextStyle.copyWith(
-                                fontSize: 16,
-                                fontWeight: FontWeight.bold,
-                                fontFamily: 'Poppins',
-                              ),
-                              fillColor: scndColor,
-                              filled: true,
-                              border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(10),
-                                borderSide: BorderSide.none,
-                              ),
+                          Container(
+                            width: double.infinity,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(10),
+                              color: scndColor,
+                            ),
+                            child: TextField(
+                              obscureText: passwordVisible,
+                              decoration: InputDecoration(
+                                  hintText: "Confirm your password",
+                                  hintStyle: thirdTextStyle.copyWith(
+                                    fontSize: 15,
+                                    fontFamily: 'Poppins',
+                                    color: thirdColor.withOpacity(0.6),
+                                  ),
+                                  border: InputBorder.none,
+                                  contentPadding: EdgeInsets.symmetric(
+                                      horizontal: 20, vertical: 15),
+                                  suffixIcon: IconButton(
+                                      onPressed: () {
+                                        setState(() {
+                                          passwordVisible = !passwordVisible;
+                                        });
+                                      },
+                                      icon: Icon(
+                                        passwordVisible
+                                            ? Icons.visibility_off
+                                            : Icons.visibility,
+                                      ))),
                             ),
                           ),
                         ],
