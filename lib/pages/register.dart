@@ -178,6 +178,9 @@ class _RegisterPageState extends State<RegisterPage> {
                         child: ElevatedButton(
                           style: ElevatedButton.styleFrom(
                             backgroundColor: loginBtnColor,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(30),
+                            ),
                           ),
                           onPressed: () {},
                           child: Text(
@@ -198,6 +201,9 @@ class _RegisterPageState extends State<RegisterPage> {
                         child: ElevatedButton(
                           style: ElevatedButton.styleFrom(
                             backgroundColor: loginBtnColor2,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(30),
+                            ),
                           ),
                           onPressed: () {},
                           child: Row(
