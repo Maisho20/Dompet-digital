@@ -33,6 +33,18 @@ class homepage extends StatelessWidget {
             ),
             ElevatedButton(
               onPressed: () {
+                Navigator.pushNamed(context, '/num');
+              },
+              child: const Text('Go to Num Page'),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.pushNamed(context, '/verifnum');
+              },
+              child: const Text('Go to Verifnum Page'),
+            ),
+            ElevatedButton(
+              onPressed: () {
                 Navigator.pushNamed(context, '/onboard');
               },
               child: const Text('Go to Onboard Page'),

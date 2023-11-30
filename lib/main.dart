@@ -5,6 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:dompet_digital/pages/register.dart';
 import 'package:dompet_digital/pages/hompage.dart';
 import 'package:dompet_digital/pages/profil.dart';
+import 'package:dompet_digital/pages/num.dart';
+import 'package:dompet_digital/pages/verifnum.dart';
 import 'package:dompet_digital/pages/ktp.dart';
 
 void main() {
@@ -23,6 +25,8 @@ class MyApp extends StatelessWidget {
         '/login': (context) => const LoginPage(),
         '/register': (context) => const RegisterPage(),
         '/profil': (context) => const Profil(),
+        '/num': (context) => const Num(),
+        '/verifnum': (context) => const Verifnum(),
         '/onboard': (context) => OnboardPage(),
         '/pin': (context) => Pincode(),
         '/ktp': (context) => const ktpPage(),
