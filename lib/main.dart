@@ -29,7 +29,12 @@ class MyApp extends StatelessWidget {
         '/verifnum': (context) => const Verifnum(),
         '/onboard': (context) => OnboardPage(),
         '/pin': (context) => Pincode(),
-        '/ktp': (context) => const ktpPage(),
+        '/ktp': (context) => const ktpPage(
+              NIM: '',
+              Nama: '',
+              TTL: '',
+              Jurusan: '',
+            ),
       },
     );
   }
