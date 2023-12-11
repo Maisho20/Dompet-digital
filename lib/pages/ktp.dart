@@ -140,31 +140,6 @@ class _ktpPageState extends State<ktpPage> {
             child: Container(
               child: Column(
                 children: [
-                  Align(
-                    alignment: Alignment.topCenter,
-                    child: Container(
-                      width: 400,
-                      height: 400,
-                      child: FutureBuilder<void>(
-                          future: _initializeControllerFuture,
-                          builder: (context, snapshot) {
-                            if (snapshot.connectionState ==
-                                ConnectionState.done) {
-                              // return _controller!.buildPreview();
-                              return _controller != null
-                                  ? AspectRatio(
-                                      aspectRatio:
-                                          _controller!.value.aspectRatio,
-                                      child: CameraPreview(_controller!),
-                                    )
-                                  : Container();
-                            } else {
-                              return Center(child: CircularProgressIndicator());
-                            }
-                          }),
-                    ),
-                  ),
-
                   //Header
                   Row(
                     // mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -208,6 +183,38 @@ class _ktpPageState extends State<ktpPage> {
                         ),
                       ),
                     ],
+                  ),
+                  SizedBox(
+                    height: 25,
+                  ),
+
+                  Align(
+                    alignment: Alignment.topCenter,
+                    child: Container(
+                      width: 400,
+                      height: 400,
+                      child: FutureBuilder<void>(
+                          future: _initializeControllerFuture,
+                          builder: (context, snapshot) {
+                            if (snapshot.connectionState ==
+                                ConnectionState.done) {
+                              // return _controller!.buildPreview();
+                              return _controller != null
+                                  ? AspectRatio(
+                                      aspectRatio:
+                                          _controller!.value.aspectRatio,
+                                      child: CameraPreview(_controller!),
+                                    )
+                                  : Container();
+                            } else {
+                              return Center(child: CircularProgressIndicator());
+                            }
+                          }),
+                    ),
+                  ),
+
+                  SizedBox(
+                    height: 20,
                   ),
 
                   //Container 3
@@ -270,7 +277,13 @@ class _ktpPageState extends State<ktpPage> {
                             ),
                           ),
                           SizedBox(height: 15),
-                          Text('Or'),
+                          Text(
+                            'Or',
+                            style: whiteTextStyle.copyWith(
+                              fontSize: 15,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
                           SizedBox(height: 25),
                           Container(
                             width: 370,
