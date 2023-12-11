@@ -165,7 +165,9 @@ class Profil extends StatelessWidget {
                   ),
                   Container(
                     child: ElevatedButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.pushNamed(context, '/num');
+                      },
                       child: Text('Set', style: TextStyle(fontSize: 20)),
                       style: ElevatedButton.styleFrom(
                         fixedSize: Size(100, 50),
