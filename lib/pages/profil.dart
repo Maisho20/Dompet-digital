@@ -163,6 +163,19 @@ class Profil extends StatelessWidget {
                       ],
                     ),
                   ),
+                  Container(
+                    child: ElevatedButton(
+                      onPressed: () {},
+                      child: Text('Set', style: TextStyle(fontSize: 20)),
+                      style: ElevatedButton.styleFrom(
+                        fixedSize: Size(100, 50),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(20),
+                        ),
+                        backgroundColor: loginBtnColor,
+                      ),
+                    ),
+                  )
                 ],
               ),
             ),
