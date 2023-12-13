@@ -12,7 +12,12 @@
           "package_name": "com.example.dompet_digital"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "903568178725-cd64bjlcd28d4lt70loh6lhgo926f75q.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyCTbS_wcgn-WZkJ9GKqRWVNT1zp7O9ts3s"
@@ -20,7 +25,19 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "903568178725-cd64bjlcd28d4lt70loh6lhgo926f75q.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "903568178725-lcidrea6ng79nn7sr7c5e8t1nj8iffk2.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.dompetDigital"
+              }
+            }
+          ]
         }
       }
     }

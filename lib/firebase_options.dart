@@ -63,6 +63,7 @@ class DefaultFirebaseOptions {
     messagingSenderId: '903568178725',
     projectId: 'dompet-digital-9f142',
     storageBucket: 'dompet-digital-9f142.appspot.com',
+    iosClientId: '903568178725-lcidrea6ng79nn7sr7c5e8t1nj8iffk2.apps.googleusercontent.com',
     iosBundleId: 'com.example.dompetDigital',
   );
 }
