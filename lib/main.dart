@@ -8,6 +8,7 @@ import 'package:dompet_digital/pages/profil.dart';
 import 'package:dompet_digital/pages/num.dart';
 import 'package:dompet_digital/pages/verifnum.dart';
 import 'package:dompet_digital/pages/ktp.dart';
+import 'package:dompet_digital/pages/afterLogin.dart';
 
 void main() {
   runApp(const MyApp());
@@ -36,6 +37,7 @@ class MyApp extends StatelessWidget {
               TTL: '',
               Jurusan: '',
             ),
+        '/afterlogin': (context) => const afterLogin(),
       },
     );
   }

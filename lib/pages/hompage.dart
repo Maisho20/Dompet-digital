@@ -61,6 +61,12 @@ class homepage extends StatelessWidget {
               },
               child: const Text('Go to KTP Page'),
             ),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.pushNamed(context, '/afterlogin');
+              },
+              child: const Text('Go to After Login Page'),
+            ),
           ],
         ),
       ),
