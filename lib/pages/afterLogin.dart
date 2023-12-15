@@ -329,46 +329,6 @@ class _Frame6State extends State<Frame6> {
                 ),
               ),
               Positioned(
-                left: 179,
-                top: 392,
-                child: Container(
-                  width: 7,
-                  height: 7,
-                  decoration: ShapeDecoration(
-                    color: Colors.white,
-                    shape: OvalBorder(),
-                    shadows: [
-                      BoxShadow(
-                        color: Color(0x3F000000),
-                        blurRadius: 2.92,
-                        offset: Offset(0, 1.17),
-                        spreadRadius: 0,
-                      )
-                    ],
-                  ),
-                ),
-              ),
-              Positioned(
-                left: 191.83,
-                top: 393.17,
-                child: Container(
-                  width: 4.67,
-                  height: 4.67,
-                  decoration: ShapeDecoration(
-                    color: Colors.white,
-                    shape: OvalBorder(),
-                    shadows: [
-                      BoxShadow(
-                        color: Color(0x3F000000),
-                        blurRadius: 2.92,
-                        offset: Offset(0, 1.17),
-                        spreadRadius: 0,
-                      )
-                    ],
-                  ),
-                ),
-              ),
-              Positioned(
                 left: 0,
                 top: 421,
                 child: Container(
