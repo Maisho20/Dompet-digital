@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "903568178725",
+    "project_id": "dompet-digital-9f142",
+    "storage_bucket": "dompet-digital-9f142.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:903568178725:android:d1ddca119d3cef653409cc",
+        "android_client_info": {
+          "package_name": "com.example.dompet_digital"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "903568178725-cd64bjlcd28d4lt70loh6lhgo926f75q.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCTbS_wcgn-WZkJ9GKqRWVNT1zp7O9ts3s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "903568178725-cd64bjlcd28d4lt70loh6lhgo926f75q.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "903568178725-lcidrea6ng79nn7sr7c5e8t1nj8iffk2.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.dompetDigital"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

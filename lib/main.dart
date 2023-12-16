@@ -5,7 +5,10 @@ import 'package:flutter/material.dart';
 import 'package:dompet_digital/pages/register.dart';
 import 'package:dompet_digital/pages/hompage.dart';
 import 'package:dompet_digital/pages/profil.dart';
+import 'package:dompet_digital/pages/num.dart';
+import 'package:dompet_digital/pages/verifnum.dart';
 import 'package:dompet_digital/pages/ktp.dart';
+import 'package:dompet_digital/pages/afterLogin.dart';
 
 void main() {
   runApp(const MyApp());
@@ -17,15 +20,24 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      theme: ThemeData(primaryColor: Colors.blue, useMaterial3: false),
       initialRoute: '/',
       routes: {
         '/': (context) => const homepage(),
         '/login': (context) => const LoginPage(),
         '/register': (context) => const RegisterPage(),
         '/profil': (context) => const Profil(),
+        '/num': (context) => const Num(),
+        '/verifnum': (context) => const Verifnum(),
         '/onboard': (context) => OnboardPage(),
         '/pin': (context) => Pincode(),
-        '/ktp': (context) => const ktpPage(),
+        '/ktp': (context) => const ktpPage(
+              NIM: '',
+              Nama: '',
+              TTL: '',
+              Jurusan: '',
+            ),
+        '/afterlogin': (context) => const afterLogin(),
       },
     );
   }

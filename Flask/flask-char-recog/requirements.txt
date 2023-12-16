@@ -1,0 +1,8 @@
+flask
+flask-smorest
+numpy
+opencv_python==4.5.5.64
+tensorflow
+imutils
+joblib
+python-dotenv
