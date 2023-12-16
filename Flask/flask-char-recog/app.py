@@ -2,7 +2,8 @@ from flask import Flask, render_template, request, jsonify
 import cv2
 import numpy as np
 import logging
-from prediction import predict
+from prediction import KTPOCR
+import os
 
 app = Flask(__name__, template_folder='templates')
 
@@ -12,17 +13,26 @@ def index():
 
 @app.route('/upload', methods=['POST'])
 def upload():
-    if request.method == 'POST':
-        # get image from request
-        img = request.files['img'].stream
-        img = cv2.imdecode(np.fromstring(img.read(), np.uint8), cv2.IMREAD_COLOR)
-        
-        # make prediction
-        pred_label, pred_conf = predict(img)
+    # Mengambil file gambar dari request POST
+    image_file = request.files['img']
 
-        response = {
-            'label': str(pred_label),
-            'confidence': str(pred_conf)
-        }
-        
-        return jsonify(response)
+    # Simpan file gambar sementara
+    temp_image_path = 'temp_image.jpg'
+    image_file.save(temp_image_path)
+
+    # Memproses gambar menggunakan KTPOCR
+    nama, alamat, agama, kecamatan = KTPOCR.process_image(temp_image_path)
+
+    # Membuat respons sesuai format yang diinginkan
+    response = {
+        'agama' : str(agama),
+        'alamat': str(alamat),
+        'nama': str(nama),
+        'kecamatan': str(kecamatan),
+    }
+
+    # Menghapus file gambar sementara
+    os.remove(temp_image_path)
+
+    # Mengembalikan respons dalam format JSON
+    return jsonify(response)
