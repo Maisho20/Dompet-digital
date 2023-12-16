@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 
 class formPage extends StatefulWidget {
-  final String NIM, Nama, TTL, Jurusan, ocrResult;
+  final String NIK, Nama, TTL, Alamat, ocrResult;
+  // NIK, Nama, TTL, Alamat, ocrResult
 
   const formPage(
       {Key? key,
-      required this.NIM,
+      required this.NIK,
       required this.Nama,
       required this.TTL,
-      required this.Jurusan,
+      required this.Alamat,
       required this.ocrResult})
       : super(key: key);
 
@@ -23,10 +24,10 @@ class _formPageState extends State<formPage> {
   // TextEditingController _controllerJurusan = TextEditingController();
 
   // final _formKey = GlobalKey<FormState>();
-  final _nimController = TextEditingController();
+  final _nikController = TextEditingController();
   final _namaController = TextEditingController();
   final _ttlController = TextEditingController();
-  final _jurusanController = TextEditingController();
+  final _alamatController = TextEditingController();
 
   @override
   void initState() {
@@ -37,19 +38,19 @@ class _formPageState extends State<formPage> {
     // _controllerJurusan = TextEditingController(text: widget.Jurusan);
 
     //controller 2
-    _nimController.text = findNIM(widget.NIM);
+    _nikController.text = findNIK(widget.NIK);
     _namaController.text = findNama(widget.Nama);
     _ttlController.text = findTTL(widget.TTL);
-    _jurusanController.text = findJurusan(widget.Jurusan);
+    _alamatController.text = findAlamat(widget.Alamat);
   }
 
-  String findNIM(String text) {
+  String findNIK(String text) {
     final RegExp regExp = RegExp(r'\b\d{16}\b');
     final Match? match = regExp.firstMatch(text);
 
     if (match != null) {
-      final String NIM = text.substring(match.start, match.end);
-      return NIM;
+      final String NIK = text.substring(match.start, match.end);
+      return NIK;
     } else {
       return '';
     }
@@ -84,13 +85,13 @@ class _formPageState extends State<formPage> {
     }
   }
 
-  String findJurusan(String text) {
+  String findAlamat(String text) {
     final RegExp regExp = RegExp(r'\b[a-zA-Z]{2,}\b');
     final Match? match = regExp.firstMatch(text);
 
     if (match != null) {
-      final String Jurusan = text.substring(match.start, match.end);
-      return Jurusan;
+      final String Aurusan = text.substring(match.start, match.end);
+      return Aurusan;
     } else {
       return '';
     }
@@ -108,10 +109,10 @@ class _formPageState extends State<formPage> {
             Container(
               margin: const EdgeInsets.all(10),
               child: TextField(
-                controller: _nimController,
+                controller: _nikController,
                 decoration: const InputDecoration(
                   border: OutlineInputBorder(),
-                  labelText: 'NIM',
+                  labelText: 'NIK',
                 ),
               ),
             ),
@@ -138,10 +139,10 @@ class _formPageState extends State<formPage> {
             Container(
               margin: const EdgeInsets.all(10),
               child: TextField(
-                controller: _jurusanController,
+                controller: _alamatController,
                 decoration: const InputDecoration(
                   border: OutlineInputBorder(),
-                  labelText: 'Jurusan',
+                  labelText: 'Alamat',
                 ),
               ),
             ),
@@ -150,10 +151,10 @@ class _formPageState extends State<formPage> {
               child: ElevatedButton(
                 onPressed: () {
                   Navigator.pop(context, {
-                    'NIM': _nimController.text,
+                    'NIK': _nikController.text,
                     'Nama': _namaController.text,
                     'TTL': _ttlController.text,
-                    'Jurusan': _jurusanController.text,
+                    'Alamat': _alamatController.text,
                   });
                 },
                 child: const Text('Submit'),
