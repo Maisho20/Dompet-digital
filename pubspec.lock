@@ -201,30 +201,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.9.3+1"
-  firebase_auth:
-    dependency: "direct main"
-    description:
-      name: firebase_auth
-      sha256: "88f88d541a2c1903c023355e13d077835573a200bbf57e12a6a2c24bf99665a1"
-      url: "https://pub.dev"
-    source: hosted
-    version: "4.15.3"
-  firebase_auth_platform_interface:
-    dependency: transitive
-    description:
-      name: firebase_auth_platform_interface
-      sha256: "3c9cfaccb7549492edf5b0c67c6dd1c6727c7830891aa6727f2fb225f0226626"
-      url: "https://pub.dev"
-    source: hosted
-    version: "7.0.9"
-  firebase_auth_web:
-    dependency: transitive
-    description:
-      name: firebase_auth_web
-      sha256: c09515414c07c11bb133aec4baae9a74c6ff1f62bf05ace54564db82b8c87852
-      url: "https://pub.dev"
-    source: hosted
-    version: "5.8.12"
   firebase_core:
     dependency: "direct main"
     description:
@@ -249,6 +225,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.10.0"
+  firebase_ml_vision:
+    dependency: "direct main"
+    description:
+      name: firebase_ml_vision
+      sha256: "893416932a24d95722cd16c5e96bd0f87c3399497e9c4344723d16a93b666524"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.12.0+3"
   flutter:
     dependency: "direct main"
     description: flutter
@@ -289,13 +273,13 @@ packages:
     source: sdk
     version: "0.0.0"
   font_awesome_flutter:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: font_awesome_flutter
-      sha256: "52671aea66da73b58d42ec6d0912b727a42248dd9a7c76d6c20f275783c48c08"
+      sha256: "1f93e5799f0e6c882819e8393a05c6ca5226010f289190f2242ec19f3f0fdba5"
       url: "https://pub.dev"
     source: hosted
-    version: "10.6.0"
+    version: "9.2.0"
   google_fonts:
     dependency: "direct main"
     description:
@@ -720,14 +704,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "3.2.1"
-  sign_in_button:
-    dependency: "direct main"
-    description:
-      name: sign_in_button
-      sha256: "977b9b0415d2f3909e642275dfabba7919ba8e111324641b76cae6d1acbd183e"
-      url: "https://pub.dev"
-    source: hosted
-    version: "3.2.0"
   sky_engine:
     dependency: transitive
     description: flutter
