@@ -120,13 +120,41 @@ class KTPOCR(object):
     @staticmethod
     def process_image(image_path):
         img = cv2.imread(image_path)
-        gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 
-        # (2) Threshold
+        dst = cv2.fastNlMeansDenoisingColored(img, None, 11, 6, 7, 21)
+
+        brightness_image = cv2.convertScaleAbs(dst, beta=8)
+
+        gray = cv2.cvtColor(brightness_image, cv2.COLOR_BGR2GRAY)
+
+        ## (2) Threshold
         th, threshed = cv2.threshold(gray, 127, 255, cv2.THRESH_TRUNC)
 
+        # Buat Structuring Element
+        sed = cv2.getStructuringElement(cv2.MORPH_RECT, (3, 3))
+
+        # Lakukan opening
+        opened_image = cv2.morphologyEx(threshed, cv2.MORPH_OPEN, sed)
+
+        # Sharpenning
+        def gamma_correction(image, gamma):
+            inv_gamma = 1 / gamma
+            gamma_image = np.clip((image / 255) ** inv_gamma * 255, 0, 255).astype(np.uint8)
+            return gamma_image
+        def convolution2d(image, kernel):
+            return cv2.filter2D(image, -1, kernel)
+        kernel_sharpen = np.array([[1, 4, 6, 4, 1],
+                                        [4, 16, 24, 16, 4],
+                                        [6, 24, -476, 24, 6],
+                                        [4, 16, 24, 16, 4],
+                                        [1, 4, 6, 4, 1]], dtype=np.float32) * -1 / 256
+
+        result = np.copy(opened_image)
+        ktp_result = gamma_correction(result, 0.5)
+        ktp_filtered = convolution2d(ktp_result, kernel_sharpen)
+
         # (3) Detect
-        result = pytesseract.image_to_string(threshed, lang="ind")
+        result = pytesseract.image_to_string(ktp_filtered, lang="ind")
 
         name = ""
         address = ""
