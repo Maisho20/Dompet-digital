@@ -10,7 +10,7 @@ import 'package:camera/camera.dart';
 import 'package:image/image.dart' as img;
 
 class ktpPage extends StatefulWidget {
-  final String NIM, Nama, TTL, Jurusan;
+  final String NIK, Nama, TTL, Alamat;
   // GolDarah,
   // Alamat,
   // RT,
@@ -21,24 +21,23 @@ class ktpPage extends StatefulWidget {
   // StatusPerkawinan,
   // Pekerjaan,
   // Kewarganegaraan;
-  const ktpPage(
-      {Key? key,
-      required this.NIM,
-      required this.Nama,
-      required this.TTL,
-      required this.Jurusan
-      // required this.GolDarah,
-      // required this.Alamat,
-      // required this.RT,
-      // required this.RW,
-      // required this.KelDesa,
-      // required this.Kecamatan,
-      // required this.Agama,
-      // required this.StatusPerkawinan,
-      // required this.Pekerjaan,
-      // required this.Kewarganegaraan
-      })
-      : super(key: key);
+  const ktpPage({
+    Key? key,
+    required this.NIK,
+    required this.Nama,
+    required this.TTL,
+    required this.Alamat,
+    // required this.GolDarah,
+    // required this.Alamat,
+    // required this.RT,
+    // required this.RW,
+    // required this.KelDesa,
+    // required this.Kecamatan,
+    // required this.Agama,
+    // required this.StatusPerkawinan,
+    // required this.Pekerjaan,
+    // required this.Kewarganegaraan
+  }) : super(key: key);
   // const ktpPage({Key? key}) : super(key: key);
 
   @override
@@ -241,10 +240,10 @@ class _ktpPageState extends State<ktpPage> {
                                   context,
                                   MaterialPageRoute(
                                     builder: (context) => formPage(
-                                        NIM: widget.NIM,
+                                        NIK: widget.NIK,
                                         Nama: widget.Nama,
                                         TTL: widget.TTL,
-                                        Jurusan: widget.Jurusan,
+                                        Alamat: widget.Alamat,
                                         // GolDarah: widget.GolDarah,
                                         // Alamat: widget.Alamat,
                                         // RT: widget.RT,
@@ -296,10 +295,10 @@ class _ktpPageState extends State<ktpPage> {
                                   context,
                                   MaterialPageRoute(
                                     builder: (context) => formPage(
-                                        NIM: widget.NIM,
+                                        NIK: widget.NIK,
                                         Nama: widget.Nama,
                                         TTL: widget.TTL,
-                                        Jurusan: widget.Jurusan,
+                                        Alamat: widget.Alamat,
                                         // GolDarah: widget.GolDarah,
                                         // Alamat: widget.Alamat,
                                         // RT: widget.RT,

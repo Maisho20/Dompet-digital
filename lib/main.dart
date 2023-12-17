@@ -9,6 +9,7 @@ import 'package:dompet_digital/pages/num.dart';
 import 'package:dompet_digital/pages/verifnum.dart';
 import 'package:dompet_digital/pages/ktp.dart';
 import 'package:dompet_digital/pages/afterLogin.dart';
+import 'package:dompet_digital/pages/form_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -32,10 +33,17 @@ class MyApp extends StatelessWidget {
         '/onboard': (context) => OnboardPage(),
         '/pin': (context) => Pincode(),
         '/ktp': (context) => const ktpPage(
-              NIM: '',
+              NIK: '',
               Nama: '',
               TTL: '',
-              Jurusan: '',
+              Alamat: '',
+            ),
+        '/form': (context) => const formPage(
+              NIK: '',
+              Nama: '',
+              TTL: '',
+              Alamat: '',
+              ocrResult: '',
             ),
         '/afterlogin': (context) => const afterLogin(),
       },

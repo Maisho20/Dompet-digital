@@ -63,6 +63,12 @@ class homepage extends StatelessWidget {
             ),
             ElevatedButton(
               onPressed: () {
+                Navigator.pushNamed(context, '/form');
+              },
+              child: const Text('Go to After form Page'),
+            ),
+            ElevatedButton(
+              onPressed: () {
                 Navigator.pushNamed(context, '/afterlogin');
               },
               child: const Text('Go to After Login Page'),
