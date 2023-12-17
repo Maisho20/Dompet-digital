@@ -160,6 +160,8 @@ class KTPOCR(object):
         address = ""
         agama = ""
         kecamatan = ""
+        nik = ""
+        ttl = ""
 
         # (5) Extract only name and address
         for word in result.split("\n"):
@@ -171,5 +173,9 @@ class KTPOCR(object):
                 agama = word.split("Agama")[-1].strip().replace(": ", "").replace("|", "")
             elif "Kecamatan" in word:
                 kecamatan = word.split("Kecamatan")[-1].strip().replace(": ", "")
+            elif "NIK" in word:
+                nik = word.split("NIK")[-1].strip().replace(": ", "")
+            elif "Tempat" in word:
+                ttl = word.split("Tempat/Tgl Lahir")[-1].strip().replace(": ", "")
 
-        return name, address, agama, kecamatan
+        return name, address, agama, kecamatan, nik, ttl
