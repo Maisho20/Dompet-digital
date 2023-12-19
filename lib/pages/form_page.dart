@@ -65,7 +65,7 @@ class _formPageState extends State<formPage> {
 
   Future<void> fetchData() async {
     final response = await http
-        .get(Uri.parse('https://c8b4-202-80-215-188.ngrok-free.app/get_data'));
+        .get(Uri.parse('https://18ff-202-80-215-188.ngrok-free.app/get_data'));
 
     if (response.statusCode == 200) {
       // Jika request sukses, parse JSON
