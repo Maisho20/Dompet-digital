@@ -280,57 +280,77 @@ class _ktpPageState extends State<ktpPage> {
                       child: Column(
                         mainAxisSize: MainAxisSize.min,
                         children: [
-                          ElevatedButton(
-                            // onPressed: () async {
-                            //   try {
-                            //     await _initializeControllerFuture;
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              ElevatedButton(
+                                // onPressed: () async {
+                                //   try {
+                                //     await _initializeControllerFuture;
 
-                            //     final image = await _controller?.takePicture();
+                                //     final image = await _controller?.takePicture();
 
-                            //     _image = File(image!.path);
-                            //     final RecognizedText = await recognizeText();
+                                //     _image = File(image!.path);
+                                //     final RecognizedText = await recognizeText();
 
-                            //     Navigator.push(
-                            //       context,
-                            //       MaterialPageRoute(
-                            //         builder: (context) => formPage(
-                            //             NIK: widget.NIK,
-                            //             Nama: widget.Nama,
-                            //             TTL: widget.TTL,
-                            //             Alamat: widget.Alamat,
-                            //             // GolDarah: widget.GolDarah,
-                            //             // Alamat: widget.Alamat,
-                            //             // RT: widget.RT,
-                            //             // RW: widget.RW,
-                            //             // KelDesa: widget.KelDesa,
-                            //             // Kecamatan: widget.Kecamatan,
-                            //             // Agama: widget.Agama,
-                            //             // StatusPerkawinan: widget.StatusPerkawinan,
-                            //             // Pekerjaan: widget.Pekerjaan,
-                            //             // Kewarganegaraan: widget.Kewarganegaraan,
-                            //             ocrResult: RecognizedText),
-                            //       ),
-                            //     );
-                            //   } catch (e) {
-                            //     print(e);
-                            //   }
-                            // },
-                            onPressed: () {
-                              _getImage(ImageSource.camera);
-                            },
-                            style: ElevatedButton.styleFrom(
-                              backgroundColor: whiteColor,
-                              shape: CircleBorder(),
-                              side: BorderSide(color: fourthColor, width: 2),
-                            ),
-                            child: Padding(
-                              padding: EdgeInsets.all(25),
-                              child: Icon(
-                                FontAwesomeIcons.camera,
-                                color: loginBtnColor2,
-                                size: 30,
+                                //     Navigator.push(
+                                //       context,
+                                //       MaterialPageRoute(
+                                //         builder: (context) => formPage(
+                                //             NIK: widget.NIK,
+                                //             Nama: widget.Nama,
+                                //             TTL: widget.TTL,
+                                //             Alamat: widget.Alamat,
+                                //             // GolDarah: widget.GolDarah,
+                                //             // Alamat: widget.Alamat,
+                                //             // RT: widget.RT,
+                                //             // RW: widget.RW,
+                                //             // KelDesa: widget.KelDesa,
+                                //             // Kecamatan: widget.Kecamatan,
+                                //             // Agama: widget.Agama,
+                                //             // StatusPerkawinan: widget.StatusPerkawinan,
+                                //             // Pekerjaan: widget.Pekerjaan,
+                                //             // Kewarganegaraan: widget.Kewarganegaraan,
+                                //             ocrResult: RecognizedText),
+                                //       ),
+                                //     );
+                                //   } catch (e) {
+                                //     print(e);
+                                //   }
+                                // },
+                                onPressed: () {
+                                  _getImage(ImageSource.camera);
+                                },
+                                style: ElevatedButton.styleFrom(
+                                  backgroundColor: whiteColor,
+                                  shape: CircleBorder(),
+                                  side:
+                                      BorderSide(color: fourthColor, width: 2),
+                                ),
+                                child: Padding(
+                                  padding: EdgeInsets.all(25),
+                                  child: Icon(
+                                    FontAwesomeIcons.camera,
+                                    color: loginBtnColor2,
+                                    size: 30,
+                                  ),
+                                ),
                               ),
-                            ),
+                              if (_image != null)
+                                SizedBox(
+                                  width: 40,
+                                ),
+                              if (_image != null)
+                                ElevatedButton(
+                                    onPressed: () {},
+                                    style: ElevatedButton.styleFrom(
+                                      shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(15),
+                                      ),
+                                      backgroundColor: loginBtnColor,
+                                    ),
+                                    child: Icon(Icons.done)),
+                            ],
                           ),
                           SizedBox(height: 15),
                           Text(
