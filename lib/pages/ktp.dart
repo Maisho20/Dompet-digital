@@ -8,6 +8,7 @@ import 'package:google_ml_kit/google_ml_kit.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:camera/camera.dart';
 import 'package:image/image.dart' as img;
+import 'package:http/http.dart' as http;
 
 class ktpPage extends StatefulWidget {
   final String NIK, Nama, TTL, Alamat;
@@ -46,6 +47,8 @@ class ktpPage extends StatefulWidget {
 
 class _ktpPageState extends State<ktpPage> {
   CameraController? _controller;
+  // File? _imageFile;
+
   Future<void>? _initializeControllerFuture;
 
   File? _image;
@@ -78,18 +81,27 @@ class _ktpPageState extends State<ktpPage> {
     return recognizedText.text;
   }
 
-  Future getImage() async {
-    final pickedFile = await picker.pickImage(source: ImageSource.camera);
-    setState(() {
-      if (pickedFile != null) {
+  // Future getImage() async {
+  //   final pickedFile = await picker.pickImage(source: ImageSource.camera);
+  //   setState(() {
+  //     if (pickedFile != null) {
+  //       _image = File(pickedFile.path);
+  //       processImage();
+  //       recognizeText();
+  //     } else {
+  //       // Use a logging framework instead of print
+  //       debugPrint('No image selected.');
+  //     }
+  //   });
+  // }
+  Future<void> _getImage(ImageSource source) async {
+    final pickedFile = await ImagePicker().pickImage(source: source);
+
+    if (pickedFile != null) {
+      setState(() {
         _image = File(pickedFile.path);
-        processImage();
-        recognizeText();
-      } else {
-        // Use a logging framework instead of print
-        debugPrint('No image selected.');
-      }
-    });
+      });
+    }
   }
 
   @override
@@ -114,6 +126,36 @@ class _ktpPageState extends State<ktpPage> {
       setState(() {});
       _controller?.startImageStream((image) => null);
     });
+  }
+
+  Future<void> _uploadImage() async {
+    try {
+      if (_image == null) {
+        print('Please select an image first.');
+        return;
+      }
+
+      String apiUrl = 'https://fe42-182-4-135-173.ngrok-free.app/upload';
+
+      var request = http.MultipartRequest('POST', Uri.parse(apiUrl));
+      request.files.add(await http.MultipartFile.fromPath('img', _image!.path));
+
+      var response = await request.send();
+      if (response.statusCode == 200) {
+        // Request successful
+        print('Image uploaded successfully!');
+        // Handle the response, if any
+        // var responseData = await response.stream.toBytes();
+        // var result = utf8.decode(responseData);
+        // print(result);
+      } else {
+        // Request failed
+        print('Failed to upload image. Status code: ${response.statusCode}');
+      }
+    } catch (error) {
+      // Handle errors
+      print('Error uploading image: $error');
+    }
   }
 
   @override
@@ -187,30 +229,42 @@ class _ktpPageState extends State<ktpPage> {
                     height: 25,
                   ),
 
-                  Align(
-                    alignment: Alignment.topCenter,
-                    child: Container(
-                      width: 400,
-                      height: 400,
-                      child: FutureBuilder<void>(
-                          future: _initializeControllerFuture,
-                          builder: (context, snapshot) {
-                            if (snapshot.connectionState ==
-                                ConnectionState.done) {
-                              // return _controller!.buildPreview();
-                              return _controller != null
-                                  ? AspectRatio(
-                                      aspectRatio:
-                                          _controller!.value.aspectRatio,
-                                      child: CameraPreview(_controller!),
-                                    )
-                                  : Container();
-                            } else {
-                              return Center(child: CircularProgressIndicator());
-                            }
-                          }),
+                  if (_image != null)
+                    Align(
+                      alignment: Alignment.topCenter,
+                      child: Container(
+                        width: 330,
+                        height: 410,
+                        alignment: Alignment.center,
+                        decoration: BoxDecoration(
+                          color: Colors.grey,
+                          image: DecorationImage(
+                            image: FileImage(_image!),
+                            fit: BoxFit.cover,
+                          ),
+                          border: Border.all(width: 8, color: Colors.black),
+                          borderRadius: BorderRadius.circular(12.0),
+                        ),
+                      ),
+                    )
+                  else
+                    Align(
+                      alignment: Alignment.topCenter,
+                      child: Container(
+                        width: 330,
+                        height: 410,
+                        alignment: Alignment.center,
+                        decoration: BoxDecoration(
+                          color: Colors.grey[200],
+                          border: Border.all(width: 6, color: Colors.black12),
+                          borderRadius: BorderRadius.circular(50.0),
+                        ),
+                        child: const Text(
+                          'Image should appear here!',
+                          style: TextStyle(fontSize: 20, color: Colors.pink),
+                        ),
+                      ),
                     ),
-                  ),
 
                   SizedBox(
                     height: 20,
@@ -227,39 +281,42 @@ class _ktpPageState extends State<ktpPage> {
                         mainAxisSize: MainAxisSize.min,
                         children: [
                           ElevatedButton(
-                            onPressed: () async {
-                              try {
-                                await _initializeControllerFuture;
+                            // onPressed: () async {
+                            //   try {
+                            //     await _initializeControllerFuture;
 
-                                final image = await _controller?.takePicture();
+                            //     final image = await _controller?.takePicture();
 
-                                _image = File(image!.path);
-                                final RecognizedText = await recognizeText();
+                            //     _image = File(image!.path);
+                            //     final RecognizedText = await recognizeText();
 
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => formPage(
-                                        NIK: widget.NIK,
-                                        Nama: widget.Nama,
-                                        TTL: widget.TTL,
-                                        Alamat: widget.Alamat,
-                                        // GolDarah: widget.GolDarah,
-                                        // Alamat: widget.Alamat,
-                                        // RT: widget.RT,
-                                        // RW: widget.RW,
-                                        // KelDesa: widget.KelDesa,
-                                        // Kecamatan: widget.Kecamatan,
-                                        // Agama: widget.Agama,
-                                        // StatusPerkawinan: widget.StatusPerkawinan,
-                                        // Pekerjaan: widget.Pekerjaan,
-                                        // Kewarganegaraan: widget.Kewarganegaraan,
-                                        ocrResult: RecognizedText),
-                                  ),
-                                );
-                              } catch (e) {
-                                print(e);
-                              }
+                            //     Navigator.push(
+                            //       context,
+                            //       MaterialPageRoute(
+                            //         builder: (context) => formPage(
+                            //             NIK: widget.NIK,
+                            //             Nama: widget.Nama,
+                            //             TTL: widget.TTL,
+                            //             Alamat: widget.Alamat,
+                            //             // GolDarah: widget.GolDarah,
+                            //             // Alamat: widget.Alamat,
+                            //             // RT: widget.RT,
+                            //             // RW: widget.RW,
+                            //             // KelDesa: widget.KelDesa,
+                            //             // Kecamatan: widget.Kecamatan,
+                            //             // Agama: widget.Agama,
+                            //             // StatusPerkawinan: widget.StatusPerkawinan,
+                            //             // Pekerjaan: widget.Pekerjaan,
+                            //             // Kewarganegaraan: widget.Kewarganegaraan,
+                            //             ocrResult: RecognizedText),
+                            //       ),
+                            //     );
+                            //   } catch (e) {
+                            //     print(e);
+                            //   }
+                            // },
+                            onPressed: () {
+                              _getImage(ImageSource.camera);
                             },
                             style: ElevatedButton.styleFrom(
                               backgroundColor: whiteColor,
@@ -285,42 +342,20 @@ class _ktpPageState extends State<ktpPage> {
                           ),
                           SizedBox(height: 25),
                           Container(
-                            width: 370,
+                            width: 270,
                             height: 50,
                             child: ElevatedButton(
-                              onPressed: () async {
-                                await getImage();
-                                final RecognizedText = await recognizeText();
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => formPage(
-                                        NIK: widget.NIK,
-                                        Nama: widget.Nama,
-                                        TTL: widget.TTL,
-                                        Alamat: widget.Alamat,
-                                        // GolDarah: widget.GolDarah,
-                                        // Alamat: widget.Alamat,
-                                        // RT: widget.RT,
-                                        // RW: widget.RW,
-                                        // KelDesa: widget.KelDesa,
-                                        // Kecamatan: widget.Kecamatan,
-                                        // Agama: widget.Agama,
-                                        // StatusPerkawinan: widget.StatusPerkawinan,
-                                        // Pekerjaan: widget.Pekerjaan,
-                                        // Kewarganegaraan: widget.Kewarganegaraan,
-                                        ocrResult: RecognizedText),
-                                  ),
-                                );
-                              },
                               style: ElevatedButton.styleFrom(
                                 shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(15),
                                 ),
                                 backgroundColor: loginBtnColor,
                               ),
+                              onPressed: () {
+                                _getImage(ImageSource.gallery);
+                              },
                               child: Text(
-                                'Upload Foto KTP',
+                                'Galery',
                                 style: whiteTextStyle.copyWith(
                                   fontSize: 20,
                                   fontWeight: FontWeight.bold,
@@ -328,7 +363,52 @@ class _ktpPageState extends State<ktpPage> {
                                 ),
                               ),
                             ),
-                          ),
+                          )
+                          //   Container(
+                          //     width: 370,
+                          //     height: 50,
+                          //     child: ElevatedButton(
+                          //       onPressed: () async {
+                          //         await getImage();
+                          //         final RecognizedText = await recognizeText();
+                          //         Navigator.push(
+                          //           context,
+                          //           MaterialPageRoute(
+                          //             builder: (context) => formPage(
+                          //                 NIK: widget.NIK,
+                          //                 Nama: widget.Nama,
+                          //                 TTL: widget.TTL,
+                          //                 Alamat: widget.Alamat,
+                          //                 // GolDarah: widget.GolDarah,
+                          //                 // Alamat: widget.Alamat,
+                          //                 // RT: widget.RT,
+                          //                 // RW: widget.RW,
+                          //                 // KelDesa: widget.KelDesa,
+                          //                 // Kecamatan: widget.Kecamatan,
+                          //                 // Agama: widget.Agama,
+                          //                 // StatusPerkawinan: widget.StatusPerkawinan,
+                          //                 // Pekerjaan: widget.Pekerjaan,
+                          //                 // Kewarganegaraan: widget.Kewarganegaraan,
+                          //                 ocrResult: RecognizedText),
+                          //           ),
+                          //         );
+                          //       },
+                          //       style: ElevatedButton.styleFrom(
+                          //         shape: RoundedRectangleBorder(
+                          //           borderRadius: BorderRadius.circular(15),
+                          //         ),
+                          //         backgroundColor: loginBtnColor,
+                          //       ),
+                          //       child: Text(
+                          //         'Upload Foto KTP',
+                          //         style: whiteTextStyle.copyWith(
+                          //           fontSize: 20,
+                          //           fontWeight: FontWeight.bold,
+                          //           fontFamily: 'Poppins',
+                          //         ),
+                          //       ),
+                          //     ),
+                          //   ),
                         ],
                       ),
                     ),
