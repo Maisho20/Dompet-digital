@@ -81,19 +81,6 @@ class _ktpPageState extends State<ktpPage> {
     return recognizedText.text;
   }
 
-  // Future getImage() async {
-  //   final pickedFile = await picker.pickImage(source: ImageSource.camera);
-  //   setState(() {
-  //     if (pickedFile != null) {
-  //       _image = File(pickedFile.path);
-  //       processImage();
-  //       recognizeText();
-  //     } else {
-  //       // Use a logging framework instead of print
-  //       debugPrint('No image selected.');
-  //     }
-  //   });
-  // }
   Future<void> _getImage(ImageSource source) async {
     final pickedFile = await ImagePicker().pickImage(source: source);
 
@@ -207,7 +194,7 @@ class _ktpPageState extends State<ktpPage> {
                             padding: EdgeInsets.zero,
                             icon: Icon(Icons.arrow_back),
                             onPressed: () {
-                              Navigator.pushNamed(context, '/');
+                              Navigator.pushNamed(context, '/register');
                             },
                           ),
                         ),
@@ -286,40 +273,6 @@ class _ktpPageState extends State<ktpPage> {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               ElevatedButton(
-                                // onPressed: () async {
-                                //   try {
-                                //     await _initializeControllerFuture;
-
-                                //     final image = await _controller?.takePicture();
-
-                                //     _image = File(image!.path);
-                                //     final RecognizedText = await recognizeText();
-
-                                //     Navigator.push(
-                                //       context,
-                                //       MaterialPageRoute(
-                                //         builder: (context) => formPage(
-                                //             NIK: widget.NIK,
-                                //             Nama: widget.Nama,
-                                //             TTL: widget.TTL,
-                                //             Alamat: widget.Alamat,
-                                //             // GolDarah: widget.GolDarah,
-                                //             // Alamat: widget.Alamat,
-                                //             // RT: widget.RT,
-                                //             // RW: widget.RW,
-                                //             // KelDesa: widget.KelDesa,
-                                //             // Kecamatan: widget.Kecamatan,
-                                //             // Agama: widget.Agama,
-                                //             // StatusPerkawinan: widget.StatusPerkawinan,
-                                //             // Pekerjaan: widget.Pekerjaan,
-                                //             // Kewarganegaraan: widget.Kewarganegaraan,
-                                //             ocrResult: RecognizedText),
-                                //       ),
-                                //     );
-                                //   } catch (e) {
-                                //     print(e);
-                                //   }
-                                // },
                                 onPressed: () {
                                   _getImage(ImageSource.camera);
                                 },
@@ -388,51 +341,6 @@ class _ktpPageState extends State<ktpPage> {
                               ),
                             ),
                           )
-                          //   Container(
-                          //     width: 370,
-                          //     height: 50,
-                          //     child: ElevatedButton(
-                          //       onPressed: () async {
-                          //         await getImage();
-                          //         final RecognizedText = await recognizeText();
-                          //         Navigator.push(
-                          //           context,
-                          //           MaterialPageRoute(
-                          //             builder: (context) => formPage(
-                          //                 NIK: widget.NIK,
-                          //                 Nama: widget.Nama,
-                          //                 TTL: widget.TTL,
-                          //                 Alamat: widget.Alamat,
-                          //                 // GolDarah: widget.GolDarah,
-                          //                 // Alamat: widget.Alamat,
-                          //                 // RT: widget.RT,
-                          //                 // RW: widget.RW,
-                          //                 // KelDesa: widget.KelDesa,
-                          //                 // Kecamatan: widget.Kecamatan,
-                          //                 // Agama: widget.Agama,
-                          //                 // StatusPerkawinan: widget.StatusPerkawinan,
-                          //                 // Pekerjaan: widget.Pekerjaan,
-                          //                 // Kewarganegaraan: widget.Kewarganegaraan,
-                          //                 ocrResult: RecognizedText),
-                          //           ),
-                          //         );
-                          //       },
-                          //       style: ElevatedButton.styleFrom(
-                          //         shape: RoundedRectangleBorder(
-                          //           borderRadius: BorderRadius.circular(15),
-                          //         ),
-                          //         backgroundColor: loginBtnColor,
-                          //       ),
-                          //       child: Text(
-                          //         'Upload Foto KTP',
-                          //         style: whiteTextStyle.copyWith(
-                          //           fontSize: 20,
-                          //           fontWeight: FontWeight.bold,
-                          //           fontFamily: 'Poppins',
-                          //         ),
-                          //       ),
-                          //     ),
-                          //   ),
                         ],
                       ),
                     ),

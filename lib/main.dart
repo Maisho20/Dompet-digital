@@ -5,7 +5,6 @@ import 'package:dompet_digital/pages/pin.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:dompet_digital/pages/register.dart';
-import 'package:dompet_digital/pages/hompage.dart';
 import 'package:dompet_digital/pages/profil.dart';
 import 'package:dompet_digital/pages/num.dart';
 import 'package:dompet_digital/pages/verifnum.dart';
@@ -31,7 +30,6 @@ class MyApp extends StatelessWidget {
         // '/': (context) => const homepage(),
         '/login': (context) => const LoginPage(),
         '/register': (context) => const RegisterPage(),
-        '/profil': (context) => const Profil(),
         '/num': (context) => const Num(),
         '/verifnum': (context) => const Verifnum(),
         '/': (context) => OnboardPage(),

@@ -18,134 +18,137 @@ class _NumState extends State<Num> {
   Widget build(BuildContext context) {
     return Scaffold(
       extendBodyBehindAppBar: true,
-      body: SafeArea(
-        child: Container(
-          decoration: BoxDecoration(
-            gradient: LinearGradient(
-              begin: Alignment.topLeft,
-              end: Alignment.bottomRight,
-              colors: <Color>[Color(0xFF213C48), Color(0xFF332044)],
-            ),
+      body: Container(
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+            colors: <Color>[Color(0xFF213C48), Color(0xFF332044)],
           ),
-          child: Center(
-            child: SingleChildScrollView(
-              child: Container(
-                // margin: EdgeInsets.only(top: 70),
-                child: Column(
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: [
-                        Container(
-                          width: 63,
-                          height: 34.42,
-                          child: ElevatedButton(
-                            style: ElevatedButton.styleFrom(
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(20),
-                              ),
-                              backgroundColor: loginBtnColor,
-                            ),
-                            onPressed: () {
-                              Navigator.pop(context);
-                            },
-                            child: IconButton(
-                              padding: EdgeInsets.zero,
-                              icon: Icon(
-                                Icons.arrow_back,
-                                color: scndColor,
-                              ),
-                              onPressed: () {
-                                Navigator.pushNamed(context, '/');
-                              },
-                            ),
-                          ),
-                        ),
-                        Container(
-                          margin: EdgeInsets.only(right: 100),
-                          child: Text(
-                            'Phone Verification',
-                            style: whiteTextStyle.copyWith(
-                              fontSize: 30,
-                              fontWeight: FontWeight.bold,
-                              fontFamily: 'Poppins',
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                    SizedBox(
-                      height: 20,
-                    ),
-                    Container(
-                      margin: EdgeInsets.only(top: 40),
-                      child: Text(
-                        'We need to verify your phone number before getting started !',
-                        style: scndTextStyle.copyWith(
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold,
-                          fontFamily: 'Poppins',
-                        ),
-                      ),
-                    ),
-                    SizedBox(
-                      height: 20,
-                    ),
-                    Container(
-                      margin: EdgeInsets.only(top: 40),
-                      child: Text(
-                        'Add Your Active Phone Number',
-                        style: scndTextStyle.copyWith(
-                          fontSize: 13,
-                          fontWeight: FontWeight.bold,
-                          fontFamily: 'Poppins',
-                        ),
-                      ),
-                    ),
-                    SizedBox(
-                      height: 20,
-                    ),
-                    Container(
-                      margin: EdgeInsets.symmetric(horizontal: 24),
-                      child: IntlPhoneField(
-                        decoration: InputDecoration(
-                          labelText: 'Phone Number',
-                          border: OutlineInputBorder(
-                            borderSide: BorderSide(),
-                          ),
-                        ),
-                        initialCountryCode: 'ID',
-                        onChanged: (phone) {
-                          print(phone.completeNumber);
-                        },
-                      ),
-                    ),
-                    SizedBox(
-                      height: 20,
-                    ),
-                    Container(
-                      width: double.infinity,
-                      height: 60,
-                      margin: EdgeInsets.symmetric(horizontal: 100),
-                      child: ElevatedButton(
+        ),
+        child: Center(
+          child: SingleChildScrollView(
+            child: Container(
+              // margin: EdgeInsets.only(top: 70),
+              child: Column(
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      Container(
+                        width: 63,
+                        height: 34.42,
+                        child: ElevatedButton(
                           style: ElevatedButton.styleFrom(
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(20),
+                            ),
                             backgroundColor: loginBtnColor,
                           ),
-                          onPressed: () {},
-                          child: Text(
-                            'Confirm',
-                            style: scndTextStyle.copyWith(
-                              fontSize: 22,
-                              fontWeight: FontWeight.bold,
-                              fontFamily: 'Poppins',
+                          onPressed: () {
+                            Navigator.pop(context);
+                          },
+                          child: IconButton(
+                            padding: EdgeInsets.zero,
+                            icon: Icon(
+                              Icons.arrow_back,
+                              color: scndColor,
                             ),
-                          )),
+                            onPressed: () {
+                              Navigator.pushNamed(context, '/form');
+                            },
+                          ),
+                        ),
+                      ),
+                      Container(
+                        margin: EdgeInsets.only(right: 25),
+                        child: Text(
+                          'Phone Verification',
+                          style: whiteTextStyle.copyWith(
+                            fontSize: 25,
+                            fontWeight: FontWeight.bold,
+                            fontFamily: 'Poppins',
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                  SizedBox(
+                    height: 50,
+                  ),
+                  Container(
+                    margin: EdgeInsets.symmetric(horizontal: 24),
+                    child: Text(
+                      'We need to verify your phone number before getting started !',
+                      style: scndTextStyle.copyWith(
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                        fontFamily: 'Poppins',
+                      ),
                     ),
-                    SizedBox(
-                      height: 200,
+                  ),
+                  SizedBox(
+                    height: 1,
+                  ),
+                  Container(
+                    margin: EdgeInsets.only(top: 40),
+                    child: Text(
+                      'Add Your Active Phone Number',
+                      style: scndTextStyle.copyWith(
+                        fontSize: 13,
+                        fontWeight: FontWeight.bold,
+                        fontFamily: 'Poppins',
+                      ),
                     ),
-                  ],
-                ),
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  Container(
+                    margin: EdgeInsets.symmetric(horizontal: 24),
+                    child: IntlPhoneField(
+                      decoration: InputDecoration(
+                        labelText: 'Phone Number',
+                        border: OutlineInputBorder(
+                          borderSide: BorderSide(),
+                        ),
+                        //add background color here
+                        filled: true,
+                        fillColor: whiteColor.withOpacity(0.9),
+                      ),
+                      initialCountryCode: 'ID',
+                      onChanged: (phone) {
+                        print(phone.completeNumber);
+                      },
+                    ),
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  Container(
+                    width: double.infinity,
+                    height: 60,
+                    margin: EdgeInsets.symmetric(horizontal: 100),
+                    child: ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: loginBtnColor,
+                        ),
+                        onPressed: () {
+                          Navigator.pushNamed(context, '/verifnum');
+                        },
+                        child: Text(
+                          'Confirm',
+                          style: scndTextStyle.copyWith(
+                            fontSize: 22,
+                            fontWeight: FontWeight.bold,
+                            fontFamily: 'Poppins',
+                          ),
+                        )),
+                  ),
+                  SizedBox(
+                    height: 200,
+                  ),
+                ],
               ),
             ),
           ),

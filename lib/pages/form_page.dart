@@ -1,3 +1,4 @@
+import 'package:dompet_digital/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
@@ -15,7 +16,6 @@ class formPage extends StatefulWidget {
   //     required this.ocrResult})
   //     : super(key: key);
   // const formPage({super.key});
-  
 
   @override
   // _formPageState createState() => _formPageState();
@@ -81,128 +81,186 @@ class _formPageState extends State<formPage> {
     }
   }
 
-  // String findNIK(String text) {
-  //   final RegExp regExp = RegExp(r'\b\d{16}\b');
-  //   final Match? match = regExp.firstMatch(text);
-
-  //   if (match != null) {
-  //     final String NIK = text.substring(match.start, match.end);
-  //     return NIK;
-  //   } else {
-  //     return '';
-  //   }
-  // }
-
-  // String findNama(String text) {
-  //   final RegExp regExp = RegExp(r'\b[a-zA-Z]{2,}\b');
-  //   final Match? match = regExp.firstMatch(text);
-
-  //   if (match != null) {
-  //     final String Nama = text.substring(match.start, match.end);
-  //     return Nama;
-  //   } else {
-  //     return '';
-  //   }
-  // }
-
-  // String findTTL(String text) {
-  //   final RegExp regExp = RegExp(r'\b\d{2}-\d{2}-\d{4}\b');
-  //   final Match? match = regExp.firstMatch(text);
-
-  //   if (match != null) {
-  //     final String TTL = text.substring(match.start, match.end);
-  //     final int year = int.parse(TTL.split('-').last);
-  //     if (year < 2011) {
-  //       return TTL;
-  //     } else {
-  //       return '';
-  //     }
-  //   } else {
-  //     return '';
-  //   }
-  // }
-
-  // String findAlamat(String text) {
-  //   final RegExp regExp = RegExp(r'\b[a-zA-Z]{2,}\b');
-  //   final Match? match = regExp.firstMatch(text);
-
-  //   if (match != null) {
-  //     final String Aurusan = text.substring(match.start, match.end);
-  //     return Aurusan;
-  //   } else {
-  //     return '';
-  //   }
-  // }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Form Page'),
-      ),
-      body: SingleChildScrollView(
-        child: data == null
-            ? const CircularProgressIndicator()
-            : data.isEmpty
-                ? const Text('No data available')
-                : Column(
-                    children: [
-                      Container(
-                        margin: const EdgeInsets.all(10),
-                        child: TextField(
-                          controller: nikController,
-                          decoration: const InputDecoration(
-                            border: OutlineInputBorder(),
-                            labelText: 'NIK',
+      extendBodyBehindAppBar: true,
+      body: Container(
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+            colors: <Color>[Color(0xFF213C48), Color(0xFF332044)],
+          ),
+        ),
+        child: Center(
+          child: SingleChildScrollView(
+            child: data == null
+                ? const CircularProgressIndicator()
+                : data.isEmpty
+                    ? Text(
+                        'No data available',
+                        style: TextStyle(
+                          color: whiteColor,
+                          fontSize: 24,
+                          fontWeight: FontWeight.bold,
+                          fontFamily: 'Poppins',
+                        ),
+                      )
+                    : Column(
+                        children: [
+                          //header
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            children: [
+                              Container(
+                                width: 63,
+                                height: 34.42,
+                                child: ElevatedButton(
+                                  style: ElevatedButton.styleFrom(
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(20),
+                                    ),
+                                    backgroundColor: loginBtnColor,
+                                  ),
+                                  onPressed: () {
+                                    Navigator.pop(context);
+                                  },
+                                  child: IconButton(
+                                    padding: EdgeInsets.zero,
+                                    icon: Icon(Icons.arrow_back),
+                                    onPressed: () {
+                                      Navigator.pushNamed(context, '/ktp');
+                                    },
+                                  ),
+                                ),
+                              ),
+                              Container(
+                                margin: EdgeInsets.only(right: 100),
+                                child: Text(
+                                  'Form Data',
+                                  style: whiteTextStyle.copyWith(
+                                    fontSize: 30,
+                                    fontWeight: FontWeight.bold,
+                                    fontFamily: 'Poppins',
+                                  ),
+                                ),
+                              ),
+                            ],
                           ),
-                        ),
-                      ),
-                      Container(
-                        margin: const EdgeInsets.all(10),
-                        child: TextField(
-                          controller: namaController,
-                          decoration: const InputDecoration(
-                            border: OutlineInputBorder(),
-                            labelText: 'Nama',
+                          SizedBox(
+                            height: 20,
                           ),
-                        ),
-                      ),
-                      Container(
-                        margin: const EdgeInsets.all(10),
-                        child: TextField(
-                          controller: ttlController,
-                          decoration: const InputDecoration(
-                            border: OutlineInputBorder(),
-                            labelText: 'TTL',
+                          //form
+                          Container(
+                            margin: const EdgeInsets.all(10),
+                            child: TextField(
+                              controller: nikController,
+                              decoration: InputDecoration(
+                                border: OutlineInputBorder(),
+                                labelText: 'NIK',
+                                filled: true,
+                                fillColor: whiteColor.withOpacity(0.9),
+                                hintStyle: thirdTextStyle.copyWith(
+                                  fontSize: 15,
+                                  fontFamily: 'Poppins',
+                                  color: thirdColor.withOpacity(0.6),
+                                ),
+                                contentPadding: EdgeInsets.symmetric(
+                                  horizontal: 20,
+                                  vertical: 15,
+                                ),
+                              ),
+                            ),
                           ),
-                        ),
-                      ),
-                      Container(
-                        margin: const EdgeInsets.all(10),
-                        child: TextField(
-                          controller: alamatController,
-                          decoration: const InputDecoration(
-                            border: OutlineInputBorder(),
-                            labelText: 'Alamat',
+                          Container(
+                            margin: const EdgeInsets.all(10),
+                            child: TextField(
+                              controller: namaController,
+                              decoration: InputDecoration(
+                                border: OutlineInputBorder(),
+                                labelText: 'Nama',
+                                filled: true,
+                                fillColor: whiteColor.withOpacity(0.9),
+                                hintStyle: thirdTextStyle.copyWith(
+                                  fontSize: 15,
+                                  fontFamily: 'Poppins',
+                                  color: thirdColor.withOpacity(0.6),
+                                ),
+                                contentPadding: EdgeInsets.symmetric(
+                                  horizontal: 20,
+                                  vertical: 15,
+                                ),
+                              ),
+                            ),
                           ),
-                        ),
+                          Container(
+                            margin: const EdgeInsets.all(10),
+                            child: TextField(
+                              controller: ttlController,
+                              decoration: InputDecoration(
+                                border: OutlineInputBorder(),
+                                labelText: 'TTL',
+                                filled: true,
+                                fillColor: whiteColor.withOpacity(0.9),
+                                hintStyle: thirdTextStyle.copyWith(
+                                  fontSize: 15,
+                                  fontFamily: 'Poppins',
+                                  color: thirdColor.withOpacity(0.6),
+                                ),
+                                contentPadding: EdgeInsets.symmetric(
+                                  horizontal: 20,
+                                  vertical: 15,
+                                ),
+                              ),
+                            ),
+                          ),
+                          Container(
+                            margin: const EdgeInsets.all(10),
+                            child: TextField(
+                              controller: alamatController,
+                              decoration: InputDecoration(
+                                border: OutlineInputBorder(),
+                                labelText: 'Alamat',
+                                filled: true,
+                                fillColor: whiteColor.withOpacity(0.9),
+                                hintStyle: thirdTextStyle.copyWith(
+                                  fontSize: 15,
+                                  fontFamily: 'Poppins',
+                                  color: thirdColor.withOpacity(0.6),
+                                ),
+                                contentPadding: EdgeInsets.symmetric(
+                                  horizontal: 20,
+                                  vertical: 15,
+                                ),
+                              ),
+                            ),
+                          ),
+                          Container(
+                            margin: const EdgeInsets.all(10),
+                            child: ElevatedButton(
+                              onPressed: () {
+                                Navigator.pop(context, {
+                                  'NIK': nikController.text,
+                                  'Nama': namaController.text,
+                                  'TTL': ttlController.text,
+                                  'Alamat': alamatController.text,
+                                });
+                                Navigator.pushNamed(context, '/num');
+                              },
+                              style: ElevatedButton.styleFrom(
+                                backgroundColor: loginBtnColor,
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(30),
+                                ),
+                              ),
+                              child: const Text('Submit'),
+                            ),
+                          ),
+                        ],
                       ),
-                      Container(
-                        margin: const EdgeInsets.all(10),
-                        child: ElevatedButton(
-                          onPressed: () {
-                            Navigator.pop(context, {
-                              'NIK': nikController.text,
-                              'Nama': namaController.text,
-                              'TTL': ttlController.text,
-                              'Alamat': alamatController.text,
-                            });
-                          },
-                          child: const Text('Submit'),
-                        ),
-                      ),
-                    ],
-                  ),
+          ),
+        ),
       ),
     );
   }

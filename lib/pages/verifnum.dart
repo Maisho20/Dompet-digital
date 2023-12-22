@@ -33,38 +33,6 @@ class _PincodeState extends State<Verifnum> {
               child: Column(
                 children: [
                   Row(
-                    // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    // children: [
-                    //   Container(
-                    //     width: 80,
-                    //     height: 45,
-                    //     child: ElevatedButton(
-                    //       onPressed: () {
-                    //         Navigator.pushNamed(context, '/login');
-                    //       },
-                    //       child: IconButton(
-                    //         padding: EdgeInsets.zero,
-                    //         icon: Icon(Icons.arrow_back),
-                    //         onPressed: () {
-                    //           Navigator.pop(context);
-                    //         },
-                    //       ),
-                    //     ),
-                    //   ),
-                    //   SizedBox(
-                    //     height: 20,
-                    //   ),
-                    //   Container(
-                    //     margin: EdgeInsets.only(right: 130),
-                    //     child: Text(
-                    //       'Set Pin Code',
-                    //       style: whiteTextStyle.copyWith(
-                    //         fontSize: 30,
-                    //         fontWeight: FontWeight.bold,
-                    //         fontFamily: 'Poppins',
-                    //       ),
-                    //     ),
-                    //   ),
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
                       Container(
@@ -84,15 +52,15 @@ class _PincodeState extends State<Verifnum> {
                             padding: EdgeInsets.zero,
                             icon: Icon(Icons.arrow_back),
                             onPressed: () {
-                              Navigator.pushNamed(context, '/ktp');
+                              Navigator.pushNamed(context, '/num');
                             },
                           ),
                         ),
                       ),
                       Container(
-                        margin: EdgeInsets.only(right: 100),
+                        margin: EdgeInsets.only(right: 50),
                         child: Text(
-                          'Set Pin Code',
+                          'Confirm Number',
                           style: whiteTextStyle.copyWith(
                             fontSize: 30,
                             fontWeight: FontWeight.bold,
@@ -108,7 +76,7 @@ class _PincodeState extends State<Verifnum> {
                   Container(
                     margin: EdgeInsets.only(top: 40),
                     child: Text(
-                      'Please Set Your Own Pin Code',
+                      'Please Confirm Your Number',
                       style: scndTextStyle.copyWith(
                         fontSize: 20,
                         fontWeight: FontWeight.bold,
@@ -175,7 +143,9 @@ class _PincodeState extends State<Verifnum> {
                         style: ElevatedButton.styleFrom(
                           backgroundColor: loginBtnColor,
                         ),
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.pushNamed(context, '/pin');
+                        },
                         child: Text(
                           'Save',
                           style: scndTextStyle.copyWith(
