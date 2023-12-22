@@ -1,6 +1,8 @@
+import 'package:dompet_digital/firebase_options.dart';
 import 'package:dompet_digital/pages/login.dart';
 import 'package:dompet_digital/pages/onboard.dart';
 import 'package:dompet_digital/pages/pin.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:dompet_digital/pages/register.dart';
 import 'package:dompet_digital/pages/hompage.dart';
@@ -11,8 +13,10 @@ import 'package:dompet_digital/pages/ktp.dart';
 import 'package:dompet_digital/pages/afterLogin.dart';
 import 'package:dompet_digital/pages/form_page.dart';
 
-void main() {
-  runApp(const MyApp());
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
