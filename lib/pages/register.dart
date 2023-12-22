@@ -1,5 +1,6 @@
 //import material.dart
 import 'package:dompet_digital/constants.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
@@ -12,6 +13,25 @@ class RegisterPage extends StatefulWidget {
 
 class _RegisterPageState extends State<RegisterPage> {
   bool passwordVisible = true;
+  TextEditingController emailController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
+  TextEditingController confirmPasswordController = TextEditingController();
+
+  Future<void> _register() async {
+    try {
+      if (passwordController.text == confirmPasswordController.text) {
+        await FirebaseAuth.instance.createUserWithEmailAndPassword(
+          email: emailController.text,
+          password: passwordController.text,
+        );
+        Navigator.pushNamed(context, '/ktp');
+      } else {
+        print("Password tidak sama");
+      }
+    } catch (e) {
+      print(e);
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -64,6 +84,7 @@ class _RegisterPageState extends State<RegisterPage> {
                               color: scndColor,
                             ),
                             child: TextFormField(
+                              controller: emailController,
                               decoration: InputDecoration(
                                 hintText: "Enter your email",
                                 hintStyle: thirdTextStyle.copyWith(
@@ -97,6 +118,7 @@ class _RegisterPageState extends State<RegisterPage> {
                               color: scndColor,
                             ),
                             child: TextField(
+                              controller: passwordController,
                               obscureText: passwordVisible,
                               decoration: InputDecoration(
                                   hintText: "Enter your password",
@@ -142,6 +164,7 @@ class _RegisterPageState extends State<RegisterPage> {
                               color: scndColor,
                             ),
                             child: TextField(
+                              controller: confirmPasswordController,
                               obscureText: passwordVisible,
                               decoration: InputDecoration(
                                   hintText: "Confirm your password",
@@ -182,7 +205,9 @@ class _RegisterPageState extends State<RegisterPage> {
                               borderRadius: BorderRadius.circular(30),
                             ),
                           ),
-                          onPressed: () {},
+                          onPressed: () {
+                            _register();
+                          },
                           child: Text(
                             "Sign Up",
                             style: whiteTextStyle.copyWith(

@@ -1,4 +1,6 @@
 import 'package:dompet_digital/constants.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
@@ -12,6 +14,56 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   bool passwordVisible = true;
   bool checkboxValue = false;
+
+  final FirebaseAuth _auth = FirebaseAuth.instance;
+  TextEditingController emailController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
+
+  // Future<void> login() async {
+  //   try {
+  //     UserCredential userCredential = await _auth.signInWithEmailAndPassword(
+  //         email: emailController.text, password: passwordController.text);
+  //     print(userCredential);
+  //     Navigator.pushNamed(context, '/afterlogin');
+  //   } on FirebaseAuthException catch (e) {
+  //     if (e.code == 'user-not-found') {
+  //       print('No user found for that email.');
+  //       ScaffoldMessenger.of(context).showSnackBar(
+  //         SnackBar(
+  //           content: Text('No user found for that email.'),
+  //         ),
+  //       );
+  //     } else if (e.code == 'wrong-password') {
+  //       print('Wrong password provided for that user.');
+  //       ScaffoldMessenger.of(context).showSnackBar(
+  //         SnackBar(
+  //           content: Text('Wrong password provided for that user.'),
+  //         ),
+  //       );
+  //     }
+  //   }
+  // }
+void login() async {
+  String email = emailController.text;
+  String password = passwordController.text;
+
+  try{
+    UserCredential userCredential = await FirebaseAuth.instance.signInWithEmailAndPassword(
+      email: email,
+      password: password,
+    );
+
+    if (userCredential.user != null) {
+      print("Sign In Success: ${userCredential.user!.email}");
+      Navigator.pushNamed(context, '/afterlogin');
+    } else {
+      print("Sign In Failed");
+    }
+  } catch(e) {
+    print("Error: $e");
+  }
+
+}
 
   @override
   Widget build(BuildContext context) {
@@ -65,6 +117,7 @@ class _LoginPageState extends State<LoginPage> {
                           color: scndColor,
                         ),
                         child: TextField(
+                          controller: emailController,
                           decoration: InputDecoration(
                             border: InputBorder.none,
                             hintText: "Enter your email address",
@@ -99,6 +152,7 @@ class _LoginPageState extends State<LoginPage> {
                           color: scndColor,
                         ),
                         child: TextField(
+                          controller: passwordController,
                           obscureText: passwordVisible,
                           decoration: InputDecoration(
                               hintText: "Enter your password",
@@ -190,7 +244,9 @@ class _LoginPageState extends State<LoginPage> {
                           borderRadius: BorderRadius.circular(30),
                         ),
                       ),
-                      onPressed: () {},
+                      onPressed: () {
+                        login();
+                      },
                       child: Text(
                         "Login",
                         style: whiteTextStyle.copyWith(

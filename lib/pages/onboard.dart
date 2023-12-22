@@ -1,3 +1,4 @@
+import 'package:dompet_digital/constants.dart';
 import 'package:flutter/material.dart';
 
 class OnboardPage extends StatelessWidget {
@@ -7,16 +8,16 @@ class OnboardPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       extendBodyBehindAppBar: true,
-      appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-        leading: IconButton(
-          icon: Icon(Icons.arrow_back),
-          onPressed: () {
-            Navigator.pop(context);
-          },
-        ),
-      ),
+      // appBar: AppBar(
+      //   backgroundColor: Colors.transparent,
+      //   elevation: 0,
+      //   leading: IconButton(
+      //     icon: Icon(Icons.arrow_back),
+      //     onPressed: () {
+      //       Navigator.pop(context);
+      //     },
+      //   ),
+      // ),
       body: Container(
           decoration: BoxDecoration(
             gradient: LinearGradient(
@@ -51,8 +52,10 @@ class OnboardPage extends StatelessWidget {
                               ),
                               Text(
                                 'Aplikasi Dompet Digital',
-                                style: TextStyle(
-                                  color: Colors.white,
+                                style: whiteTextStyle.copyWith(
+                                  fontSize: 22,
+                                  fontWeight: FontWeight.bold,
+                                  fontFamily: 'Poppins',
                                 ),
                               ),
                             ],
@@ -65,7 +68,14 @@ class OnboardPage extends StatelessWidget {
                     onPressed: () {
                       Navigator.pushNamed(context, '/login');
                     },
-                    child: const Text('Go to Login Page'),
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: loginBtnColor,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(30),
+                      ),
+                    ),
+                    child: Text('Go to Login Page',
+                        style: TextStyle(color: Colors.white)),
                   ),
                 ]),
           )),

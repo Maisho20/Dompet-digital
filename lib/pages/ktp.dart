@@ -11,7 +11,7 @@ import 'package:image/image.dart' as img;
 import 'package:http/http.dart' as http;
 
 class ktpPage extends StatefulWidget {
-  final String NIK, Nama, TTL, Alamat;
+  // final String NIK, Nama, TTL, Alamat;
   // GolDarah,
   // Alamat,
   // RT,
@@ -22,24 +22,24 @@ class ktpPage extends StatefulWidget {
   // StatusPerkawinan,
   // Pekerjaan,
   // Kewarganegaraan;
-  const ktpPage({
-    Key? key,
-    required this.NIK,
-    required this.Nama,
-    required this.TTL,
-    required this.Alamat,
-    // required this.GolDarah,
-    // required this.Alamat,
-    // required this.RT,
-    // required this.RW,
-    // required this.KelDesa,
-    // required this.Kecamatan,
-    // required this.Agama,
-    // required this.StatusPerkawinan,
-    // required this.Pekerjaan,
-    // required this.Kewarganegaraan
-  }) : super(key: key);
-  // const ktpPage({Key? key}) : super(key: key);
+  // const ktpPage({
+  //   Key? key,
+  //   required this.NIK,
+  //   required this.Nama,
+  //   required this.TTL,
+  //   required this.Alamat,
+  //   // required this.GolDarah,
+  //   // required this.Alamat,
+  //   // required this.RT,
+  //   // required this.RW,
+  //   // required this.KelDesa,
+  //   // required this.Kecamatan,
+  //   // required this.Agama,
+  //   // required this.StatusPerkawinan,
+  //   // required this.Pekerjaan,
+  //   // required this.Kewarganegaraan
+  // }) : super(key: key);
+  const ktpPage({Key? key}) : super(key: key);
 
   @override
   _ktpPageState createState() => _ktpPageState();
@@ -135,7 +135,7 @@ class _ktpPageState extends State<ktpPage> {
         return;
       }
 
-      String apiUrl = 'https://fe42-182-4-135-173.ngrok-free.app/upload';
+      String apiUrl = 'https://86c4-114-6-31-174.ngrok-free.app/upload';
 
       var request = http.MultipartRequest('POST', Uri.parse(apiUrl));
       request.files.add(await http.MultipartFile.fromPath('img', _image!.path));
@@ -148,6 +148,8 @@ class _ktpPageState extends State<ktpPage> {
         // var responseData = await response.stream.toBytes();
         // var result = utf8.decode(responseData);
         // print(result);
+        Navigator.push(
+            context, MaterialPageRoute(builder: (context) => formPage()));
       } else {
         // Request failed
         print('Failed to upload image. Status code: ${response.statusCode}');
@@ -342,7 +344,9 @@ class _ktpPageState extends State<ktpPage> {
                                 ),
                               if (_image != null)
                                 ElevatedButton(
-                                    onPressed: () {},
+                                    onPressed: () {
+                                      _uploadImage();
+                                    },
                                     style: ElevatedButton.styleFrom(
                                       shape: RoundedRectangleBorder(
                                         borderRadius: BorderRadius.circular(15),

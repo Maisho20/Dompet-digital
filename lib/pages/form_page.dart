@@ -3,18 +3,19 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 
 class formPage extends StatefulWidget {
-  final String NIK, Nama, TTL, Alamat, ocrResult;
+  // final String NIK, Nama, TTL, Alamat, ocrResult;
   // NIK, Nama, TTL, Alamat, ocrResult
 
-  const formPage(
-      {Key? key,
-      required this.NIK,
-      required this.Nama,
-      required this.TTL,
-      required this.Alamat,
-      required this.ocrResult})
-      : super(key: key);
+  // const formPage(
+  //     {Key? key,
+  //     required this.NIK,
+  //     required this.Nama,
+  //     required this.TTL,
+  //     required this.Alamat,
+  //     required this.ocrResult})
+  //     : super(key: key);
   // const formPage({super.key});
+  
 
   @override
   // _formPageState createState() => _formPageState();
@@ -65,7 +66,7 @@ class _formPageState extends State<formPage> {
 
   Future<void> fetchData() async {
     final response = await http
-        .get(Uri.parse('https://0556-182-4-135-185.ngrok-free.app/get_data'));
+        .get(Uri.parse('https://86c4-114-6-31-174.ngrok-free.app/get_data'));
 
     if (response.statusCode == 200) {
       // Jika request sukses, parse JSON
