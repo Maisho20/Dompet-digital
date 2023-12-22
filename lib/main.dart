@@ -5,7 +5,6 @@ import 'package:dompet_digital/pages/pin.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:dompet_digital/pages/register.dart';
-import 'package:dompet_digital/pages/profil.dart';
 import 'package:dompet_digital/pages/num.dart';
 import 'package:dompet_digital/pages/verifnum.dart';
 import 'package:dompet_digital/pages/ktp.dart';
